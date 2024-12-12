@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Renb</title>
+        <link rel="icon" href="images/icon.png">
+        <link rel="stylesheet" href="style.css" media="screen">
+        <script type="text/javascript" src="background.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" style="margin-left: 25px;">Home</a>
+            <div id="header-right-container">
+                <a href="https://www.linkedin.com/in/th%C3%A9o-gazengel-640354262/">
+                    <img class="icon" src="images/linked-in.png" alt="LinkedIn"></img>
+                </a>
+                <a href="https://github.com/Renberget">
+                    <img class="icon" src="images/github.png" alt="Github"></img>
+                </a>
+                <a href="mailto:theogazengel1@gmail.com">theogazengel1@gmail.com</a>
+            </div>
+        </header>
+        <div id="content">
+            <div class="fixed-content">
+                <canvas id="webgl-canvas"></canvas>
+            </div>
+            <div id="shadow-border" class="fixed-content"></div>
+            <section>
+                <div id="main-text">
+                    <h1>Procedural Animation</h1>
+                    <p>A fully procedurally animated spider in <a href="https://www.unrealengine.com/">Unreal Engine</a> using the <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/control-rig-in-unreal-engine">Control Rig</a>, it can walk on any terrain.<br>
+                        At first, I downloaded a free <a href="https://free3d.com/3d-model/spider-257546.html">rigged spider model</a> and started experimenting.
+                    </p>
+                    <img src="images/procedural-animation/legs.jpg" alt="Spider legs" style="margin: 20px;">
+                    <p>
+                        I made two groups of legs that move in turn. While moving, each leg performs a sphere trace and snaps to the closest point on the terrain.<br>
+                        Then, I wanted the spider to be able to climb anywhere so I made a player controller with Unreal's character movement component. Each frame, the controller take the average position of every legs and add some height, a sphere trace is made in the spider's current velocity direction to anticipate the terrain changes and start rotating.
+                    </p>
+                    <p>
+                        I am planning to make the movements smoother and add <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/physics-driven-animation-in-unreal-engine">physics-based animation</a> for more realism.
+                    </p>
+                    <h2>More coming soon</h2>
+                </div>
+            </section>
+            <div style="height: 50px"></div>
+        </div>
+    </body>
+</html>
