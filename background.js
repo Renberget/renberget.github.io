@@ -5,7 +5,7 @@ const MAX_METABALL_RADIUS = 180.0;
 const NOISE_SPEED = 0.1;
 
 const MIN_METABALL_VELOCITY = 50.0;
-const MAX_METABALL_VELOCITY = 3000.0;
+const MAX_METABALL_VELOCITY = 2000.0;
 
 const BACKGROUND_COLOR = "1.0, 1.0, 1.0";
 const METABALLS_COLOR = "0.85, 0.85, 0.85";
@@ -13,8 +13,9 @@ const METABALLS_COLOR = "0.85, 0.85, 0.85";
 const MIN_MOUSE_DISTANCE = 300.0;
 const MOUSE_FORCE_FACTOR = 0.15;
 
-const SCROLL_FACTOR = 1.5;
-const SCROLL_RANDOM = 300.0;
+const SCROLL_FACTOR_X = 0.2;
+const SCROLL_FACTOR_Y = 0.5;
+const SCROLL_VARIATION = 0.4;
 
 const REF_MIN_SIDE = 1000.0;
 
@@ -146,8 +147,8 @@ window.onload = function() {
     for (let i = 0; i < METABALL_COUNT; ++i) {
       let deltaX = window.scrollX - previousScroll.x;
       let deltaY = window.scrollY - previousScroll.y;
-      metaballs[i].velX += SCROLL_FACTOR * deltaX + SCROLL_RANDOM * (Math.random() - 0.5);
-      metaballs[i].velY += SCROLL_FACTOR * deltaY + SCROLL_RANDOM * (Math.random() - 0.5);
+      metaballs[i].velX += deltaX * SCROLL_FACTOR_X * (1.0 + SCROLL_VARIATION * (Math.random() * 2.0 - 0.5));
+      metaballs[i].velY += deltaY * SCROLL_FACTOR_Y * (1.0 + SCROLL_VARIATION * (Math.random() * 2.0 - 0.5));
     }
 
     previousScroll.x = window.scrollX;
@@ -189,7 +190,7 @@ function step(currentTime) {
     let length = Math.sqrt(metaball.velX * metaball.velX + metaball.velY * metaball.velY);
     metaball.velX /= length;
     metaball.velY /= length;
-    length = Math.min(Math.max(MIN_METABALL_VELOCITY, length - deltaTime * 1000.0), MAX_METABALL_VELOCITY);
+    length = Math.min(Math.max(MIN_METABALL_VELOCITY, length - deltaTime * 400.0), MAX_METABALL_VELOCITY);
     metaball.velX *= length;
     metaball.velY *= length;
 

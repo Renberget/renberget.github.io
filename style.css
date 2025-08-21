@@ -81,7 +81,6 @@ header {
 
 #main-text p {
     width: 100%;
-    text-align: start;
 }
 
 #main-text p {
@@ -121,6 +120,7 @@ a:hover {
 p {
     font-size: x-large;
     line-height: 1.4;
+    text-align: justify;
 }
 
 img {
